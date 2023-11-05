@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
     <group ns="ns1_368731">
-        <node name="origin_turtle_node" pkg="my_best_controller" type="lab2_controller.py" output="screen"></node>
+        <node name="origin_turtle_node" pkg="turtle_controller" type="lab2_controller.py" output="screen"></node>
         <node name="turtlesim_node_1" pkg="turtlesim" type="turtlesim_node" output="screen"></node>
     </group>
     <group ns="ns2_368731">
-        <node name="imitator_turtle_node" pkg="my_best_controller" type="lab2_controller.py" output="screen"></node>
+        <node name="imitator_turtle_node" pkg="turtle_controller" type="lab2_controller.py" output="screen"></node>
         <node name="turtlesim_node_2" pkg="turtlesim" type="turtlesim_node" output="screen"></node>
     </group>
+    <node name="targets_node" pkg="turtle_controller" type="targets_node.py" output="screen"></node>
 </launch>
