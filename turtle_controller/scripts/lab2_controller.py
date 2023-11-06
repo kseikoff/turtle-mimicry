@@ -13,10 +13,7 @@ class SimpleController():
         self.create_in_namespace(curr_ns)
         self.rate = rospy.Rate(30)
 
-        self.target_x = 0
-        self.target_y = 0
-        self.x = 0
-        self.y = 0
+        self.init_coords()
 
     def create_in_namespace(self, ns:str):
         ns1 = "ns1_368731"
@@ -31,6 +28,13 @@ class SimpleController():
             self.cmd_vel_pub = rospy.Publisher('/{}/turtle1/cmd_vel'.format(ns2), Twist, queue_size=5)
             self.subscriber = rospy.Subscriber("/{}/turtle1/pose".format(ns2), Pose, self.pose_callback)
             self.subscriber_target = rospy.Subscriber("/{}/turtle1/pose".format(ns1), Pose, self.target_callback)
+
+    def init_coords(self):
+        self.x = 0
+        self.y = 0
+
+        self.target_x = 0
+        self.target_y = 0
         
     def target_callback(self, msg:Pose):
         # rospy.loginfo("target updated with: {0} {1}".format(msg.x, msg.y))
